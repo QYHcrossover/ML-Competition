@@ -141,7 +141,7 @@ df.head() #查看前5行信息
 np.where(df == np.inf)
 ```
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226230333671.png" alt="image-20211226230333671" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211227140349506.png" style="zoom:80%;" />
 
 发现仅有outstanding_disburse_ratio这一列出现了inf,然后我决定查找该列除inf外之外最大的数（500001.0）,所以我将inf替换成了稍大于500001的600001。
 
@@ -159,7 +159,7 @@ np.where(df == np.inf)
 
 然后需要将所有特征进一步区分成一下三种类型，特征值唯一型，连续型数据，离散型数据。特征值唯一型数据，顾名思义指的是该特征仅有一个特征值，正因该特征仅有一个特征值，所以没有额外信息，故后续试验中可以将这些特征删除。结果如下：
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226193152774.png" alt="image-20211226193152774" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226193152774.png" style="zoom:80%;" />
 
 第二个划分是连续型数值型数据，该特征有两个条件，一是该特征取值数量较多，另外如果该特征取值数量为n,那么该特征并不为取值为(0,1,……,n-1)，即取值并不连续有断层，结果如下：
 
@@ -194,13 +194,13 @@ g = g.map_dataframe(sns.violinplot,x="class",y="value",hue="class")
 
 <img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226205419093.png" alt="image-20211226205419093" style="zoom:80%;" />
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226205459127.png" alt="image-20211226205459127" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226205459127.png" style="zoom:80%;" />
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226205525624.png" alt="image-20211226205525624" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226205525624.png" style="zoom:80%;" />
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226205604207.png" alt="image-20211226205604207" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226205604207.png" style="zoom:80%;" />
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226205657821.png" alt="image-20211226205657821" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226205657821.png" style="zoom:80%;" />
 
 从图上可以看出很多特征的小提琴图呈”钉字型”，这表明该特征的特征值都集中分布在某个很小的区间内；另外很多特征的class0的class1的小提琴图非常相似，这表明该特征并不存在显著的（能区分类别的）差异性。
 
@@ -219,7 +219,7 @@ g = g.map_dataframe(sns.histplot,x="value",hue="class",multiple="dodge",discrete
 
 结果如下：
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226210315830.png" alt="image-20211226210315830" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226210315830.png" style="zoom:80%;" />
 
 根据图中显示的结果，我们发现所有的离散型特征都不具备很好的区分度。反应在图中就是蓝色的柱状图和橙色的柱状图十分相像。
 
@@ -235,7 +235,7 @@ sns.heatmap(df.corr(), square=True, cmap='coolwarm', annot_kws={'size': 14})
 
 结果，如下图所示:
 
-<img src="C:\Users\qinyuheng\Desktop\999898.png" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/999898.png" style="zoom:80%;" />
 
 根据图中结果发现，有很多对特征的相关度非常高；于是我统计了相关度超过0.99，以及小于-0.99的特征对；结果如下：
 
@@ -262,7 +262,7 @@ X_train,X_test,y_train,y_test = train_test_split(df.iloc[:,1:-1],df.iloc[:,-1],t
 
 这边我设置了`stratify=y`，这条语句的作用在于保持训练集和测试集的类别分布与原来一致，测试集的类别分布为：
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226213245403.png" alt="image-20211226213245403" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226213245403.png" style="zoom:80%;" />
 
 首先测试最简单的逻辑回归模型,结果如下图
 
@@ -302,7 +302,7 @@ print(classification_report(y_svc_pred,y_test))
 
 同样是将class_weight设置成balanced，结果为
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226213806574.png" alt="image-20211226213806574" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226213806574.png" style="zoom:80%;" />
 
 尽管设置了class_weight，但是SVM还是会非常倾向于给出”0“的预测结果，可以看出在类别为0的样本上，模型的查准率和召回率都很高。但是在类别为1的样本上，模型无论是查准率还是召回率都非常低，因为在2w个测试集中，模型只认为60个样本的类别为1，而实际上真实数量有4千左右。
 
@@ -344,7 +344,7 @@ print(classification_report(y_xgb_pred,y_test))
 
 首先使用不带任何参数的xgboost拟合训练数据，结果如下：
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226221450645.png" alt="image-20211226221450645" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226221450645.png" style="zoom:80%;" />
 
 这个结果与随机森林和SVM相差无几，考虑到类别不平衡的因素。与上述模型类似，xgboostClassifier中有一个参数`scale_pos_weight`可以调整类别权重，在本例中，尝试设置成类别0的数量与类别1数量之比。
 
@@ -355,7 +355,7 @@ model = xgb.XGBClassifier(scale_pos_weight=size0/size1)
 
 再次训练xgboost模型，得到结果如下
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211226223951753.png" alt="image-20211226223951753" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226223951753.png" style="zoom:80%;" />
 
 macro-f1指标达到了0.541,在上述所有模型中最高。
 
@@ -391,7 +391,7 @@ grid_clf.fit(X,y)
 
 参数搜索的结果如下：
 
-![image-20211226225056335](https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226225056335.png)
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211226225056335.png" alt="image-20211226225056335" style="zoom:80%;" />
 
 经过简单的参数搜索后，模型的macro-f1指标来到了0.576超过了上述所有的模型。
 
@@ -421,5 +421,5 @@ print(classification_report(y_pred,y_test))
 
 最终的macro-f1指标，混淆矩阵，分类结果报告如下
 
-<img src="C:\Users\qinyuheng\AppData\Roaming\Typora\typora-user-images\image-20211227134941118.png" alt="image-20211227134941118" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/QYHcrossover/blog-imgbed//blogimg/image-20211227134941118.png" style="zoom:80%;" />
 
